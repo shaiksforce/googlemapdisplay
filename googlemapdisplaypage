@@ -1,14 +1,24 @@
+<!--- 
+   * Author: Shaik Nagajani	
+   * created Date : 24/11/2017
+   * use : this page is used to display google map reference based on account billing address on Account Detail Page.
+-->
+
 <apex:page standardController="Account">
+ 
 <head>
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-      var myOptions={ zoom: 15,mapTypeId: google.maps.MapTypeId.ROADMAP,mapTypeControl: false };
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAudIfJUhsZGrpju0o931bQ5grllMx7dEM&sensor=false"></script> 
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function() {
+      var myOptions={ zoom: 15,
+                     mapTypeId: google.maps.MapTypeId.ROADMAP,
+                     mapTypeControl: false
+                    };
  	  var map;
 	  var marker;
 	  var geocoder = new google.maps.Geocoder();
-      var address ="{!Account.BillingStreet},{!Account.BillingPostalCode}{!Account.BillingCity}, {!Account.BillingState},{!Account.BillingCountry}";
+      var address ="{!Account.BillingStreet},{!Account.BillingPostalCode},{!Account.BillingCity}, {!Account.BillingState},{!Account.BillingCountry}";
       var infowindow = new google.maps.InfoWindow({
             content: "<b>{!Account.Name}</b><br>{!Account.BillingStreet}<br>{!Account.BillingCity}, {!Account.BillingPostalCode}<br>{!Account.BillingState}<br>{!Account.BillingCountry}"
     });
@@ -56,18 +66,18 @@ $(document).ready(function() {
          }
        }
 });
-</script>
-<style>
-#map {
-font-family: Arial;
-font-size:12px;
-line-height:normal !important;
-height:250px;
-background:transparent;
-}
-</style>
-</head>
-<body>
-<div id="map"></div>
-</body>
+ </script>
+    <style>
+        #map {
+            font-family: Arial;
+            font-size:12px;
+            line-height:normal !important;
+            height:250px;
+            background:transparent;
+        }
+    </style>
+  </head>
+        <body>
+            <div id="map"></div>
+        </body>
 </apex:page>
